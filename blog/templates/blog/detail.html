@@ -1,0 +1,7 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+    <P>Blog Title: {{ blog.title }}</P>
+    <P>Description: <br><br>{{ blog.description|striptags|truncatechars:100 }}</P>
+    <P>Date Added: {{ blog.date_added|date:'M d, Y H:i' }}</P>
+{% endblock content %}

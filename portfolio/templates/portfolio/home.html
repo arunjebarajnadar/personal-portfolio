@@ -1,0 +1,25 @@
+{% extends "portfolio/base.html" %}
+
+{% block content %}
+<h1>My Portfolio</h2>
+
+<ul>
+    {% load static %}
+    <img src="{% static 'portfolio/SquareBlonde.jpg' %}"> - <a href="{% static 'portfolio/resume.pdf' %}">Resume</a> - <a href="{% url 'blog:all_blogs' %}">Blogs</a>
+    
+    {% for project in projects %}
+        <h2>{{ project.title }}</h2>
+        <P>{{ project.description }}</P>
+        <P>
+            <img src="{{ project.image.url }}">
+        </P>
+        <P>
+            {% if project.url %}
+                <a href="{{ project.url }}">Link</a>
+            {% endif %}
+        </P>
+    {% empty %}
+        <P>No projects have been added yet.</P>
+    {% endfor %}
+</ul>
+{% endblock content %}
